@@ -47,7 +47,7 @@ module Typhon
       when @s.scan(/@@@/)             then [:heap_read]
       when @s.scan(/ aa#{LABEL}/)     then [:label, label(@s[1])]
       when @s.scan(/ a@#{LABEL}/)     then [:call, label(@s[1])]
-      when @s.scan(/ a #{LABEL}/)     then [:jump, label{@s[1]}]
+      when @s.scan(/ a #{LABEL}/)     then [:jump, label(@s[1])]
       when @s.scan(/ @a#{LABEL}/)     then [:jump_zero, label(@s[1])]
       when @s.scan(/ @@#{LABEL}/)     then [:jump_negative, label(@s[1])]
       when @s.scan(/ @ /)             then [:return]

@@ -2,4 +2,4 @@
 $LOAD_PATH.unshift File.expand_path("../lib", File.dirname(__FILE__))
 require 'typhon'
 
-Typhon.run(ARGF.read)
+Typhon.run(ARGF.read.chomp)
