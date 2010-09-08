@@ -1,4 +1,4 @@
-# 暴風言語 Typhon
+# 暴風型言語 Typhon
  - Esoteric Language
  - Rubyで作る奇妙なプログラム言語を見て作成
 ## Pythonのアナグラム
@@ -10,9 +10,11 @@
  - WhiteSpaceの処理系(スタック型言語)
 ## サンプルプログラム
 >aaa@aa@aaa
-@ aaaaa@@a@aa@
-@ aa
+>@ aaaaa@@a@aa@
+>@ aa
 
 ## 実行結果
 > Hi
 
+# USAGE
+> ruby bin/typhon examples/hi.ty

@@ -60,10 +60,29 @@ module Typhon
           address = pop
           value = @heap[address]
           if value.nil?
-            raise ProgramError, "サブルーチンの外からreturn私用としました" if pc.nil?
+            raise ProgramError, "ヒープの未初期化の位置を読みだそうとしました。" + "(address = #{address})"
           end
+          push(value)
+        when :label
+          #NOTE: Nothing to do
+        when :jump
+          pc = jump_to(arg)
+        when :jump_zero
+          if pop == 0
+            pc = jump_to(arg)
+          end
+        when :jump_negative
+          if pop < 0
+            pc = jump_to(arg)
+          end
+        when :call
+          return_to.push(pc)
+          pc = jump_to(arg)
+        when :return
+          pc = return_to.pop
+          raise ProgramError, "サブルーチンの外からreturnしようとしました" if pc.nil?
         when :exit
-          exit 0
+          return
         when :char_out
           print pop.chr
         when :num_out
