@@ -9,12 +9,36 @@
  - 台風っぽい文字(@とa)で記述するプログラム言語
  - WhiteSpaceの処理系(スタック型言語)
 ## サンプルプログラム
->aaa@aa@aaa
->@ aaaaa@@a@aa@
->@ aa
-
+    aaa@aa@aaa
+    @ aaaaa@@a@aa@
+    @ aa
 ## 実行結果
-> Hi
-
+    Hi
 # USAGE
 > ruby bin/typhon examples/hi.ty
+
+## 文法
+    | aa#{NUM}   | push NUM            | スタックに積む                       |
+    | a_a        | dup                 | スタックの一番上を複製               |
+    | a@a#{NUM}  | copy NUM            | コピー                               |
+    | a_@        | swap                | 入れ替え                             |
+    | a__        | discard             | 捨てる                               |
+    | a@_#{NUM}  | slide               | 捨てる                               |
+    | @aaa       | add                 | 足し算                               |
+    | @aa@       | sub                 | 引き算                               |
+    | @aa_       | mul                 | 掛け算                               |
+    | @a@a       | div                 | 割り算                               |
+    | @a@@       | mod                 | 余剰                                 |
+    | @@__       | heap_write          | ヒープに書き込む                     |
+    | @@@_       | heap_read           | ヒープから読みだす                   |
+    | aa#{LABEL} | label LABEL         | ラベルを設定                         |
+    | a@#{LABEL} | call LABEL          | サブルーチンを呼び出す               |
+    | a_#{LABEL} | jump LABEL          | ジャンプする                         |
+    | @a#{LABEL} | jump_zero LABEL     | スタックの一番上が0ならジャンプする  |
+    | @@#{LABEL} | jump_negative LABEL | スタックの一番上が負ならジャンプする |
+    | @_         | return              | サブルーチンから戻る                 |
+    | ___        | exit                | exit                                 |
+    | @_aa       | char_out            | 文字出力                             |
+    | @_a@       | num_out             | 数値出力                             |
+    | @_@_       | char_in             | 文字入力                             |
+    | @_@@       | num_in              | 数値入力                             |
