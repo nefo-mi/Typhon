@@ -1,20 +1,7 @@
-require 'test/unit'
+require 'test/typhontest'
 require 'lib/typhon/vm'
 
 class TC_VM < Test::Unit::TestCase
-
-  class Display
-    attr_accessor :print
-
-    def initialize
-      @print = []
-    end
-
-    def write(msg)
-      @print.push(msg)
-    end
-  end
-
   def test_push
     res = display_capture do
       Typhon::VM.run([[:push, 1], [:push, 2], [:num_out], [:num_out], [:exit]])
@@ -197,24 +184,6 @@ class TC_VM < Test::Unit::TestCase
     msg = "サブルーチンの外からreturnしようとしました"
     assert_raise_with_message(Typhon::VM::ProgramError, msg) do
       Typhon::VM.run([[:return]])
-    end
-  end
-
-  private
-  def display_capture
-    disp = TC_VM::Display.new
-    $stdout = disp    
-    yield
-    $stdout = STDOUT
-    return disp.print
-  end
-
-  def assert_raise_with_message(e, msg)
-    begin
-      yield
-      flunk("Expected raise " + e.to_s + " but not occurs anthing else.")
-    rescue e => ex
-      assert_equal(ex.message, msg)
     end
   end
 end

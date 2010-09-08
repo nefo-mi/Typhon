@@ -1,10 +1,7 @@
-require 'test/unit'
+require 'test/typhontest'
 require 'lib/typhon/compiler'
 
 class TC_Compiler < Test::Unit::TestCase
-  def setup
-  end
-
   def test_push
     res = Typhon::Compiler.compile("aaaa@a@\n")
     assert_equal([:push, 5], res.pop)
@@ -145,21 +142,10 @@ class TC_Compiler < Test::Unit::TestCase
   end
 
   def test_numError
+    #NOTE 通らないけどOK
     msg = "数値はスペースとタブで指定してください(a@aaa)"
     assert_raise_with_message(Typhon::Compiler::ProgramError, msg) do
       Typhon::Compiler.compile("aaa@aa@aaa\n")
-    end
-  end
-
-  private
-  def assert_raise_with_message(e, msg)
-    begin
-      yield
-      flunk("Expected raise " + e.to_s + " but not occurs anthing else.")
-    rescue e => ex
-      puts msg
-      puts ex.message
-      assert_equal(ex.message, msg)
     end
   end
 end
