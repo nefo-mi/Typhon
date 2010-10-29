@@ -63,7 +63,7 @@ module Typhon
 
     def num(str)
       if str !~ /\A[a@]+\z/
-        raise ArgumentError, "数値は@とaで指定してください(#{str.inspect})"
+        raise ProgramError, "数値は@とaで指定してください(#{str.inspect})"
       end
       num = str.sub(/\Aa/, "+").sub(/\A@/, "-").gsub(/a/, "0").gsub(/@/, "1")
       num.to_i(2)

@@ -142,8 +142,7 @@ class TC_Compiler < Test::Unit::TestCase
   end
 
   def test_numError
-    #NOTE 通らないけどOK
-    msg = "数値はスペースとタブで指定してください(a@aaa)"
+    msg = "数値は@とaで指定してください(a@aaa)"
     assert_raise_with_message(Typhon::Compiler::ProgramError, msg) do
       Typhon::Compiler.compile("aaa@aa@aaa\n")
     end
