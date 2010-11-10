@@ -129,16 +129,21 @@ class TC_VM < Test::Unit::TestCase
   end
 
   def test_char_in
-    puts "input 'd5'"
-    res = display_capture do
-      Typhon::VM.run([[:push, 1], [:char_in], [:push, 1], [:heap_read], [:char_out], [:exit]])
+    res = nil
+    simulate_keyboard do
+      res = display_capture do
+        Typhon::VM.run([[:push, 1], [:char_in], [:push, 1], [:heap_read], [:char_out], [:exit]])
+      end
     end
     assert_equal(["d"], res)
   end
 
   def test_num_in
-    res = display_capture do
-      Typhon::VM.run([[:push, 1], [:num_in], [:push, 1], [:heap_read], [:num_out], [:exit]])
+    res = nil
+    simulate_keyboard do
+      res = display_capture do
+        Typhon::VM.run([[:push, 1], [:num_in], [:push, 1], [:heap_read], [:num_out], [:exit]])
+      end
     end
     assert_equal([5], res)
   end

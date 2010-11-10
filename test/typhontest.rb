@@ -1,7 +1,7 @@
 require 'test/unit'
 
 module TyphonTest
-    class Display
+  class Display
     attr_accessor :print
 
     def initialize
@@ -12,9 +12,28 @@ module TyphonTest
       @print.push(msg)
     end
   end
+
+  class Keyboard
+    def getc
+      c = "d"
+      c[0]
+    end
+
+    def gets
+      5
+    end
+  end
 end
 
 class Test::Unit::TestCase
+  def simulate_keyboard
+    keyboard = TyphonTest::Keyboard.new
+    $stdin = keyboard
+    yield
+    $stdin = STDIN
+    return true
+  end
+
   def display_capture
     disp = TyphonTest::Display.new
     $stdout = disp    
