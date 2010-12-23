@@ -1,0 +1,55 @@
+# 暴風型言語 Typhon
+ - Esoteric Language
+ - Rubyで作る奇妙なプログラム言語を見て作成
+## Pythonのアナグラム
+ - でもRubyでできている。
+### いつの日かPythonに移動させまふ
+# コンセプト
+ - 9年ぶりに沖縄に台風が直撃した記念
+ - 台風っぽい文字(@とa)で記述するプログラム言語
+ - WhiteSpaceの処理系(スタック型言語)
+## サンプルプログラム
+    aaa@aa@aaa
+    @ aaaaa@@a@aa@
+    @ aa
+## 実行結果
+    Hi
+# USAGE
+> ruby bin/typhon examples/hi.ty
+
+## 文法
+※ \_はスペース
+
+Typhon|中間言語|説明
+-|-|-
+aa#{NUM}|pushNUM|スタックに積む
+a\_a|dup|スタックの一番上を複製
+a@a#{NUM}|copyNUM|コピー
+a\_@|swap|入れ替え
+a\_\_|discard|捨てる
+a@\_#{NUM}|slide|捨てる
+@aaa|add|足し算
+@aa@|sub|引き算
+@aa\_|mul|掛け算
+@a@a|div|割り算
+@a@@|mod|余剰
+@@\_\_|heap\_write|ヒープに書き込む
+@@@\_|heap\_read|ヒープから読みだす
+aa#{LABEL}|labelLABEL|ラベルを設定
+a@#{LABEL}|callLABEL|サブルーチンを呼び出す
+a\_#{LABEL}|jumpLABEL|ジャンプする
+@a#{LABEL}|jump\_zeroLABEL|スタックの一番上が0ならジャンプする
+@@#{LABEL}|jump\_negativeLABEL|スタックの一番上が負ならジャンプする
+@\_|return|サブルーチンから戻る
+\_\_\_|exit|exit
+@\_aa|char\_out|文字出力
+@\_a@|num\_out|数値出力
+@\_@\_|char\_in|文字入力
+@\_@@|num\_in|数値入力
+
+### 数値の扱い
+数値は二進数で表現する.
+    e.g aa@a@ -> +0101 -> 5
+        @@a@a -> -1010 -> -10
+### ラベルの扱い
+ラベルも数値と同じようにあらわす

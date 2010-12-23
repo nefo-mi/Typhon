@@ -1,55 +1,53 @@
-# 暴風型言語 Typhon
+# Typhon is Typhoon Language
  - Esoteric Language
- - Rubyで作る奇妙なプログラム言語を見て作成
-## Pythonのアナグラム
- - でもRubyでできている。
-### いつの日かPythonに移動させまふ
-# コンセプト
- - 9年ぶりに沖縄に台風が直撃した記念
- - 台風っぽい文字(@とa)で記述するプログラム言語
- - WhiteSpaceの処理系(スタック型言語)
-## サンプルプログラム
+ - Making via "Rubyで作る奇妙なプログラム言語"
+## Anagram of Python
+ - But...Create of Ruby...
+### One day I remake to Python.
+# Concept of Typhon
+ - Typhoon came to Okinawa in Japan after so long.
+ - "@" seems like Typoon clouds.
+ - Typhon is based on WhiteSpace (such as stack model language)
+## Typhon examples
     aaa@aa@aaa
     @ aaaaa@@a@aa@
     @ aa
-## 実行結果
+## execution result
     Hi
 # USAGE
 > ruby bin/typhon examples/hi.ty
 
 ## 文法
-※ \_はスペース
+※ \_is Space
 
-Typhon|中間言語|説明
+Typhon|Middle language|explain
 -|-|-
-aa#{NUM}|pushNUM|スタックに積む
-a\_a|dup|スタックの一番上を複製
-a@a#{NUM}|copyNUM|コピー
-a\_@|swap|入れ替え
-a\_\_|discard|捨てる
-a@\_#{NUM}|slide|捨てる
-@aaa|add|足し算
-@aa@|sub|引き算
-@aa\_|mul|掛け算
-@a@a|div|割り算
-@a@@|mod|余剰
-@@\_\_|heap\_write|ヒープに書き込む
-@@@\_|heap\_read|ヒープから読みだす
-aa#{LABEL}|labelLABEL|ラベルを設定
-a@#{LABEL}|callLABEL|サブルーチンを呼び出す
-a\_#{LABEL}|jumpLABEL|ジャンプする
-@a#{LABEL}|jump\_zeroLABEL|スタックの一番上が0ならジャンプする
-@@#{LABEL}|jump\_negativeLABEL|スタックの一番上が負ならジャンプする
-@\_|return|サブルーチンから戻る
-\_\_\_|exit|exit
-@\_aa|char\_out|文字出力
-@\_a@|num\_out|数値出力
-@\_@\_|char\_in|文字入力
-@\_@@|num\_in|数値入力
+aa#{NUM}|pushNUM|add to stack
+a\_a|dup|dup top of stack value
+a@a#{NUM}|copyNUM|copy stack value
+a\_@|swap|swap stack value
+a\_\_|discard|drop top of stack value
+a@\_#{NUM}|slide|drop stack value top to NUM
+@aaa|add|calcurate add
+@aa@|sub|calcurate sub
+@aa\_|mulcalucurate multi
+@a@a|div|calucurate div
+@a@@|mod|calucurate mod
+@@\_\_|heap\_write|write to heap
+@@@\_|heap\_read|read from heap
+aa#{LABEL}|labelLABEL|set to label
+a@#{LABEL}|callLABEL|call Subroutine
+a\_#{LABEL}|jumpLABEL|jump to label
+@a#{LABEL}|jump\_zeroLABEL|jump to label when top of stacks value is zero 
+@@#{LABEL}|jump\_negativeLABEL|jump to label when top of stacks value is negative
+@\_|return|return to Subroutine
+\_\_\_|exit|exit program
+@\_aa|char\_out|output char to standard I/O
+@\_a@|num\_out|output number to standard I/O
+@\_@\_|char\_in|input char from standard I/O
+@\_@@|num\_in|input number from standard I/O
 
-### 数値の扱い
-数値は二進数で表現する.
+### Numbers are depiction of binary
     e.g aa@a@ -> +0101 -> 5
         @@a@a -> -1010 -> -10
-### ラベルの扱い
-ラベルも数値と同じようにあらわす
+### LABEL is same as number
