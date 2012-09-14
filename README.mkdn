@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/nefo-mi/Typhon.png)](http://travis-ci.org/nefo-mi/Typhon)
+
 # Typhon is Typhoon Language
  - Esoteric Language
  - Making via "Rubyで作る奇妙なプログラム言語"
