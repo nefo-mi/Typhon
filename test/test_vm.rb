@@ -1,5 +1,8 @@
-require 'test/typhontest'
-require 'lib/typhon/vm'
+# encoding : utf-8
+$LOAD_PATH.unshift File.expand_path("./", File.dirname(__FILE__))
+$LOAD_PATH.unshift File.expand_path("../lib/typhon/", File.dirname(__FILE__))
+require 'typhontest'
+require 'vm'
 
 class TC_VM < Test::Unit::TestCase
   def test_push

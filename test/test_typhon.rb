@@ -1,6 +1,8 @@
+# encoding : utf-8
 $LOAD_PATH.unshift File.expand_path("../lib", File.dirname(__FILE__))
-require 'lib/typhon'
-require 'test/typhontest'
+$LOAD_PATH.unshift File.expand_path("./", File.dirname(__FILE__))
+require 'typhon'
+require 'typhontest'
 
 class TC_Typhon < Test::Unit::TestCase
   def test_push

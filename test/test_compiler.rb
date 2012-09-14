@@ -1,5 +1,8 @@
-require 'test/typhontest'
-require 'lib/typhon/compiler'
+# encoding : utf-8
+$LOAD_PATH.unshift File.expand_path("./", File.dirname(__FILE__))
+$LOAD_PATH.unshift File.expand_path("../lib/typhon/", File.dirname(__FILE__))
+require 'typhontest'
+require 'compiler'
 
 class TC_Compiler < Test::Unit::TestCase
   def test_push
